@@ -26,7 +26,7 @@
     RBMenuItem *item = [[RBMenuItem alloc]initMenuItemWithTitle:@"Read"];
     RBMenuItem *item2 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Help"];
     RBMenuItem *item3 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Settings"];
-      RBMenuItem *item4 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Sign out"];
+    RBMenuItem *item4 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Sign out"];
 	// Do any additional setup after loading the view, typically from a nib.
     _menu = [[RBMenu alloc] initMenuWithItems:@[item, item2, item3, item4] WithTextAllignment:RBMenuTextAllignmentLeft];
     _menu.delegate = self;

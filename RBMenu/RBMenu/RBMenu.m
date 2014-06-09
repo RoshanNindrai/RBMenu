@@ -141,18 +141,19 @@ NSInteger const STARTINDEX            = 1;
     
 }
 
--(void)dismissMenu{
+-(void)dismissMenuWithCompletionHandler:(void (^)(BOOL))completion{
     
     if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState){
         
         self.delegate.view.frame = CGRectOffset(self.delegate.view.frame, 0, - MENU_HEIGHT + MENU_BOUNCE_OFFSET);
         self.currentMenuState = RBMenuClosedState;
         
+        if(completion)
+            completion(YES);
+        
     }
     
 }
-
-
 
 -(void)didPan:(UIPanGestureRecognizer *)panRecognizer{
     
@@ -224,43 +225,43 @@ NSInteger const STARTINDEX            = 1;
 -(void)dismissMenuAnimated:(BOOL)animated WithCompletionHandler:(void (^)(BOOL))completion
 {
     if(!animated)
-        [self dismissMenu];
-    else{
-        
-        if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState)
-            
-            [self animateMenuClosingWithCompletion:completion];
-        
-    }
-    
+        [self dismissMenuWithCompletionHandler:completion];
+    else
+        [self animateMenuClosingWithCompletion:completion];
+
 }
 
 -(void)animateMenuClosingWithCompletion:(void (^)(BOOL))completion{
+   
+    if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState){
     
-    [UIView animateWithDuration:.2 animations:^{
-        
-        //pulling the contentController up
-        self.delegate.view.center = CGPointMake(self.delegate.view.center.x, self.delegate.view.center.y + MENU_BOUNCE_OFFSET);
-        
-        
-    }completion:^(BOOL finished){
-        
+    
         [UIView animateWithDuration:.2 animations:^{
-            
-            //pushing the menu controller down
-            self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
-            
+        
+            //pulling the contentController up
+            self.delegate.view.center = CGPointMake(self.delegate.view.center.x, self.delegate.view.center.y + MENU_BOUNCE_OFFSET);
+        
+        
         }completion:^(BOOL finished){
+        
+            [UIView animateWithDuration:.2 animations:^{
             
-            if(finished){
-                self.currentMenuState = RBMenuClosedState;
-                if(completion)
+                //pushing the menu controller down
+                self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
+            
+            }completion:^(BOOL finished){
+            
+                if(finished){
+                    self.currentMenuState = RBMenuClosedState;
+                    if(completion)
                     completion(finished);
-            }
+                }
             
+            }];
+        
         }];
         
-    }];
+    }
     
     
 }
