@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RBMenu.h"
 
-@interface ULViewController : UIViewController
+@interface ULViewController : UIViewController<RBMenuDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *table;
+
+- (IBAction)show:(id)sender;
 
 @end
