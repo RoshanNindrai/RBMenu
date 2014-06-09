@@ -28,7 +28,8 @@ to support this delegation the UIViewController must confirm to RBMenuDelegate. 
      _menu = [[RBMenu alloc] initMenuWithItems:@[item, item2, item3, item4] WithTextAllignment:RBMenuTextAllignmentLeft];
     _menu.delegate = self;
     
-In the above code, the RBMenuItems are added to the menu and the allignment of the title along the menu is also mentioned while menu creation.
+In the above code, the RBMenuItems are added to the menu and the allignment of the title along the menu is also mentioned while menu creation. Custom menu with user defined properties to the Menu can be performed by using the fowlling method.
+
 At present RBMenu supports three menu title allignments 
 
     RBMenuTextAllignmentLeft
@@ -36,7 +37,13 @@ At present RBMenu supports three menu title allignments
     RBMenuTextAlignmentCenter
 
 The added demo project would give you additional information. 
-
+    
+    -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
+               withTextColor:(UIColor *)textColor
+          hightLightTextColor:(UIColor *)hightLightTextColor
+          BackGroundColor:(UIColor *)backGroundColor
+          WithTextAllignment:(RBMenuAllignment)titleAllignment
+          
 
 TODO
 ======
