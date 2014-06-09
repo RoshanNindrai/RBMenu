@@ -96,13 +96,11 @@ NSInteger const STARTINDEX            = 1;
         if(PANGESTUREENABLE)
             [_delegate.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
         
+        [_delegate.view setAutoresizingMask:UIViewAutoresizingNone];
+        [[[[UIApplication sharedApplication] delegate] window] insertSubview:self atIndex:0];
+
+        
     }
-    [_delegate.view.layer setShadowRadius:2.0f];
-    [_delegate.view.layer setShadowOpacity:1.0f];
-    [_delegate.view.layer setShadowColor:[UIColor lightGrayColor].CGColor];
-    [_delegate.view.layer setShadowOffset:CGSizeMake(0.0f, .10f)];
-    [_delegate.view setAutoresizingMask:UIViewAutoresizingNone];
-    [[[[UIApplication sharedApplication] delegate] window] insertSubview:self atIndex:0];
     
 }
 -(void)setMenuContentTable:(UITableView *)menuContentTable
