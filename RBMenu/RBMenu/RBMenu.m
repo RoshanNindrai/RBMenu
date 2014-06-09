@@ -48,14 +48,14 @@ NSInteger const STARTINDEX            = 1;
     return [self initMenuWithItems:menuItems
                      withTextColor:[UIColor grayColor]
                hightLightTextColor:[UIColor blackColor]
-                andBackGroundColor:[UIColor whiteColor]
+                BackGroundColor:[UIColor whiteColor]
                 WithTextAllignment:titleAllignment];
 }
 
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
                withTextColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
-          andBackGroundColor:(UIColor *)backGroundColor
+          BackGroundColor:(UIColor *)backGroundColor
         WithTextAllignment:(RBMenuAllignment)titleAllignment
 {
     

@@ -47,7 +47,7 @@ typedef enum {
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
                withTextColor:(UIColor *)textColor
           hightLightTextColor:(UIColor *)hightLightTextColor
-          andBackGroundColor:(UIColor *)backGroundColor
+          BackGroundColor:(UIColor *)backGroundColor
           WithTextAllignment:(RBMenuAllignment)titleAllignment;
 
 -(void)showMenu;
