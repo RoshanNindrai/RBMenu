@@ -46,6 +46,12 @@ At present RBMenu supports three menu title allignments
 The added demo project would give you additional information. 
     
 
+Screenshots
+=======================
+
+![ScreenShot](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/Screen%20Shot%202014-06-09%20at%2011.17.58%20AM.png)
+
+
 
 TODO
 ======
