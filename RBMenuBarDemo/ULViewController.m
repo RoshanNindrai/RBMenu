@@ -51,7 +51,7 @@
     
     [self.menu dismissMenuAnimated:YES WithCompletionHandler:^(BOOL completed){
         
-        NSLog(@"%d index pressed", index);
+        NSLog(@"%lu index pressed", (unsigned long)index);
     }];
     
     
