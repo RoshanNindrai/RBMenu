@@ -48,15 +48,15 @@ NSInteger const STARTINDEX            = 1;
     return [self initMenuWithItems:menuItems
                      withTextColor:[UIColor grayColor]
                hightLightTextColor:[UIColor blackColor]
-                andBackGroundColor:[UIColor whiteColor]
-                WithTextAllignment:titleAllignment];
+                backGroundColor:[UIColor whiteColor]
+                andTextAllignment:titleAllignment];
 }
 
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
                withTextColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
-          andBackGroundColor:(UIColor *)backGroundColor
-          WithTextAllignment:(RBMenuAllignment)titleAllignment
+          backGroundColor:(UIColor *)backGroundColor
+          andTextAllignment:(RBMenuAllignment)titleAllignment
 {
     
     self = [[RBMenu alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), MENU_HEIGHT)];
