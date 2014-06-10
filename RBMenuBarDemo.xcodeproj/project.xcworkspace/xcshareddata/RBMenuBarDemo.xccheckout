@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>28C36287-D555-4324-80E9-76503F099F89</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RBMenuBarDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CD0663C9-EE5A-45E5-8854-9EF963A4A7A1</key>
+		<string>https://github.com/RoshanNindrai/RBMenu.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RBMenuBarDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CD0663C9-EE5A-45E5-8854-9EF963A4A7A1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/RoshanNindrai/RBMenu.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CD0663C9-EE5A-45E5-8854-9EF963A4A7A1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CD0663C9-EE5A-45E5-8854-9EF963A4A7A1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RBMenuBarDemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
