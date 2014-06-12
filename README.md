@@ -11,21 +11,27 @@ The following controller can be added to yout project by copying the RBMenu fold
 Usage
 ======
 
-THe RBMenu consict of menu items that is denoted by RBMenuItems. Each item for now holds just a title. TO create a Menu item 
+THe RBMenu consict of menu items that is denoted by RBMenuItems. Each item for now holds a title and a completion handler. To create a Menu item 
 
     #import "RBMenu.h"
         
-create each menu item by creating an object of RBMenuItems class For this demo porject the menu items were created by the follwing snippet
+create each menu item by creating an object of RBMenuItems class For this demo project the menu items were created by the following snippet. Each element have a completionHandler that gets executed when the user clicks the option.
 
-    RBMenuItem *item = [[RBMenuItem alloc]initMenuItemWithTitle:@"Read"];
-    RBMenuItem *item2 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Help"];
-    RBMenuItem *item3 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Settings"];
-    RBMenuItem *item4 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Sign out"];
+    RBMenuItem *item = [[RBMenuItem alloc]initMenuItemWithTitle:@"First" withCompletionHandler:^(BOOL finished){
+        
+       NSLog(@"First selected");
+        
+    }];
+    RBMenuItem *item2 = [[RBMenuItem alloc]initMenuItemWithTitle:@"Second" withCompletionHandler:^(BOOL finished){
+        
+        NSLog(@"Second selected");
+        
+    }];
+
     
-Once the item are created it is neccesary to add to items to the RBMenu. The RBMenu class uses the delegation design pattern where in it informs the delegate UIViewController with selection operations.
-to support this delegation the UIViewController must confirm to RBMenuDelegate. Once the protocol is added the RBMenu can be created by the following line.
+Once the item are created it is neccesary to add the items to the RBMenu. The delegate needs to be a subclass of UIViewController
 
-     _menu = [[RBMenu alloc] initMenuWithItems:@[item, item2, item3, item4] WithTextAllignment:RBMenuTextAllignmentLeft];
+     _menu = [[RBMenu alloc] initMenuWithItems:@[item, item2] WithTextAllignment:RBMenuTextAllignmentLeft];
     _menu.delegate = self;
     
 In the above code, the RBMenuItems are added to the menu and the allignment of the title along the menu is also mentioned while menu creation. Custom menu with user defined properties to the Menu can be performed by using the following method.
