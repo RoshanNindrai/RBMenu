@@ -48,15 +48,15 @@ NSInteger const STARTINDEX            = 1;
     return [self initMenuWithItems:menuItems
                      withTextColor:[UIColor grayColor]
                hightLightTextColor:[UIColor blackColor]
-                backGroundColor:[UIColor whiteColor]
-                andTextAllignment:titleAllignment];
+                   backGroundColor:[UIColor whiteColor]
+                 andTextAllignment:titleAllignment];
 }
 
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
                withTextColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
-          backGroundColor:(UIColor *)backGroundColor
-          andTextAllignment:(RBMenuAllignment)titleAllignment
+             backGroundColor:(UIColor *)backGroundColor
+           andTextAllignment:(RBMenuAllignment)titleAllignment
 {
     
     self = [[RBMenu alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), MENU_HEIGHT)];
@@ -84,22 +84,25 @@ NSInteger const STARTINDEX            = 1;
     
 }
 
--(void)setDelegate:(UIViewController<RBMenuDelegate> *)delegate{
+-(void)setDelegate:(UIViewController *)delegate{
     
     if(_delegate != delegate){
         
         if(delegate.navigationController)
-            _delegate = (UIViewController<RBMenuDelegate> *)delegate.navigationController;
+            _delegate = delegate.navigationController;
         else
             _delegate = delegate;
+        
         
         if(PANGESTUREENABLE)
             [_delegate.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
         
+        [self setShadowProperties];
+        [_delegate.view setAutoresizingMask:UIViewAutoresizingNone];
+        [[[[UIApplication sharedApplication] delegate] window] insertSubview:self atIndex:0];
+        
     }
-    [self setShadowProperties];
-    [_delegate.view setAutoresizingMask:UIViewAutoresizingNone];
-    [[[[UIApplication sharedApplication] delegate] window] insertSubview:self atIndex:0];
+    
     
 }
 
@@ -228,19 +231,7 @@ NSInteger const STARTINDEX            = 1;
     
 }
 
--(void)dismissMenuAnimated:(BOOL)animated WithCompletionHandler:(void (^)(BOOL))completion
-{
-    if(!animated)
-        [self dismissMenu];
-    else{
-        
-        if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState)
-            
-            [self animateMenuClosingWithCompletion:completion];
-        
-    }
-    
-}
+
 
 -(void)animateMenuClosingWithCompletion:(void (^)(BOOL))completion{
     
@@ -359,24 +350,9 @@ NSInteger const STARTINDEX            = 1;
     
     [self.menuContentTable reloadData];
     
-    if([self.delegate isKindOfClass:[UINavigationController class]]){
-        
-        for(UIViewController<RBMenuDelegate> *childController in self.delegate.childViewControllers){
-            
-            if([childController respondsToSelector:@selector(topBar:selectedIndex:)])
-                [childController topBar:self selectedIndex:indexPath.row - STARTINDEX];
-            
-        }
-        
-    }
-    else{
-        
-        if([self.delegate respondsToSelector:@selector(topBar:selectedIndex:)]){
-            [self.delegate topBar:self selectedIndex:indexPath.row - STARTINDEX];
-            
-        }
-    }
+    RBMenuItem *selectedItem = [self.menuItems objectAtIndex:indexPath.row - STARTINDEX];
     
+    [self animateMenuClosingWithCompletion:selectedItem.completion];
     
 }
 
@@ -404,9 +380,5 @@ NSInteger const STARTINDEX            = 1;
     }
     
 }
-
-#pragma mark highlighting options
-
-
 
 @end

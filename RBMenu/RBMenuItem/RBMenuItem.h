@@ -8,20 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RBMenuItem : UICollectionViewCell
+@interface RBMenuItem : NSObject
 
-//The image of the menu button
-@property(nonatomic, strong)UIImage* itemImage;
-//The border color of the menu button
-@property(nonatomic, strong)UIColor *borderColor;
+
 //The title of the menu item
 @property(nonatomic, strong)NSString *title;
-
+//completion handler
+@property(nonatomic, strong)void (^completion)(BOOL);
 
 //initialization methods
-
-//initialize a menuitem with border clear
-
--(RBMenuItem *)initMenuItemWithTitle:(NSString *)title;
+-(RBMenuItem *)initMenuItemWithTitle:(NSString *)title withCompletionHandler:(void (^)(BOOL))completion;
 
 @end

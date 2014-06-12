@@ -18,7 +18,7 @@ typedef enum {
 }RBMenuState;
 
 typedef enum {
-
+    
     RBMenuTextAllignmentLeft,
     RBMenuTextAlignmentRight,
     RBMenuTextAlignmentCenter
@@ -27,18 +27,10 @@ typedef enum {
 
 @class RBMenu;
 
-@protocol RBMenuDelegate <NSObject>
-
-@required
--(void)topBar:(RBMenu *)menuBar selectedIndex:(NSUInteger)index;
-
-@end
-
-
 @interface RBMenu : UIView<UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic)RBMenuState currentMenuState;
-@property(nonatomic, weak)UIViewController<RBMenuDelegate> *delegate;
+@property(nonatomic, weak)UIViewController *delegate;
 @property(nonatomic)NSUInteger highLighedIndexPath;
 
 //create Menu with white background
@@ -46,12 +38,11 @@ typedef enum {
 
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
                withTextColor:(UIColor *)textColor
-          hightLightTextColor:(UIColor *)hightLightTextColor
-          backGroundColor:(UIColor *)backGroundColor
-          andTextAllignment:(RBMenuAllignment)titleAllignment;
+         hightLightTextColor:(UIColor *)hightLightTextColor
+             backGroundColor:(UIColor *)backGroundColor
+           andTextAllignment:(RBMenuAllignment)titleAllignment;
 
 -(void)showMenu;
 
--(void)dismissMenuAnimated:(BOOL)animated WithCompletionHandler:(void(^)(BOOL))completion;
 
 @end
