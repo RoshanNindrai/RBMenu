@@ -32,6 +32,7 @@ typedef enum {
 @property(nonatomic)RBMenuState currentMenuState;
 @property(nonatomic, weak)UIViewController *delegate;
 @property(nonatomic)NSUInteger highLighedIndex;
+@property(nonatomic)CGFloat height;
 @property(nonatomic, strong)UIColor *textColor;
 @property(nonatomic, strong)UIColor *highLightTextColor;
 @property(nonatomic)RBMenuAllignment titleAllignment;

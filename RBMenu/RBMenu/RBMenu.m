@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define CELLIDENTIFIER          @"menubutton"
-#define MENU_HEIGHT             260
 #define MENU_BOUNCE_OFFSET      10
 #define PANGESTUREENABLE        1
 #define VELOCITY_TRESHOLD       1000
@@ -36,6 +35,7 @@ NSInteger const STARTINDEX            = 1;
     self = [super initWithFrame:frame];
     if (self) {
         self.highLighedIndex = STARTINDEX;
+        self.height = 260;
     }
     return self;
 }
@@ -57,7 +57,8 @@ NSInteger const STARTINDEX            = 1;
            andTextAllignment:(RBMenuAllignment)titleAllignment
 {
     
-    self = [[RBMenu alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), MENU_HEIGHT)];
+    self = [[RBMenu alloc] init];
+    self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), self.height);
     self.menuItems = menuItems;
     self.titleAllignment = titleAllignment;
     self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
@@ -79,6 +80,19 @@ NSInteger const STARTINDEX            = 1;
         [self.menuContentTable setBackgroundColor:backgroundColor];
         
     }
+    
+}
+
+-(void)setHeight:(CGFloat)height{
+    
+    if(_height != height){
+        
+        CGRect menuFrame = self.frame;
+        menuFrame.size.height = height;
+        _menuContentTable.frame = menuFrame;
+        _height = height;
+    }
+    
     
 }
 
@@ -154,7 +168,7 @@ NSInteger const STARTINDEX            = 1;
     
     if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState){
         
-        self.delegate.view.frame = CGRectOffset(self.delegate.view.frame, 0, - MENU_HEIGHT + MENU_BOUNCE_OFFSET);
+        self.delegate.view.frame = CGRectOffset(self.delegate.view.frame, 0, - _height + MENU_BOUNCE_OFFSET);
         self.currentMenuState = RBMenuClosedState;
         
     }
@@ -171,11 +185,11 @@ NSInteger const STARTINDEX            = 1;
        UIGestureRecognizerStateChanged){
         CGPoint translation = [panRecognizer translationInView:panRecognizer.view.superview];
         
-        if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y <= (([[UIScreen mainScreen] bounds].size.height / 2 + MENU_HEIGHT) - MENU_BOUNCE_OFFSET)){
+        if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y <= (([[UIScreen mainScreen] bounds].size.height / 2 + _height) - MENU_BOUNCE_OFFSET)){
             
             self.currentMenuState = RBMenuDisplayingState;
             viewCenter.y = ABS(viewCenter.y + translation.y);
-            if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y < [UIScreen mainScreen].bounds.size.height / 2 + MENU_HEIGHT - MENU_BOUNCE_OFFSET )
+            if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y < [UIScreen mainScreen].bounds.size.height / 2 + _height - MENU_BOUNCE_OFFSET )
                 self.delegate.view.center = viewCenter;
             
             [panRecognizer setTranslation:CGPointZero inView:self.delegate.view];
@@ -191,9 +205,9 @@ NSInteger const STARTINDEX            = 1;
             [self openMenuFromCenterWithVelocity:velocity.y];
         else if(velocity.y < -VELOCITY_TRESHOLD)
             [self closeMenuFromCenterWithVelocity:ABS(velocity.y)];
-        else if( viewCenter.y <  ([[UIScreen mainScreen] bounds].size.height / 2 + (MENU_HEIGHT / 2)))
+        else if( viewCenter.y <  ([[UIScreen mainScreen] bounds].size.height / 2 + (_height / 2)))
             [self closeMenuFromCenterWithVelocity:AUTOCLOSE_VELOCITY];
-        else if(viewCenter.y <= ([[UIScreen mainScreen] bounds].size.height / 2 + MENU_HEIGHT - MENU_BOUNCE_OFFSET))
+        else if(viewCenter.y <= ([[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET))
             [self openMenuFromCenterWithVelocity:AUTOCLOSE_VELOCITY];
         
     }
@@ -209,12 +223,12 @@ NSInteger const STARTINDEX            = 1;
         [UIView animateWithDuration:.2 animations:^{
             
             //pushing the content controller down
-            self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + MENU_HEIGHT);
+            self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height);
         }completion:^(BOOL finished){
             
             [UIView animateWithDuration:.2 animations:^{
                 
-                self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + MENU_HEIGHT - MENU_BOUNCE_OFFSET);
+                self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET);
                 
             }completion:^(BOOL finished){
                 
@@ -280,7 +294,7 @@ NSInteger const STARTINDEX            = 1;
 -(void)openMenuFromCenterWithVelocity:(CGFloat)velocity{
     
     
-    CGFloat viewCenterY = [[UIScreen mainScreen] bounds].size.height / 2 + MENU_HEIGHT - MENU_BOUNCE_OFFSET;
+    CGFloat viewCenterY = [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET;
     self.currentMenuState = RBMenuDisplayingState;
     [UIView animateWithDuration:((viewCenterY - self.delegate.view.center.y) / velocity)  animations:^{
         
