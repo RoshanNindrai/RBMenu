@@ -50,8 +50,17 @@ At present RBMenu supports three menu title allignments
     RBMenuTextAlignmentCenter
 
 The added demo project would give you additional information. 
-    
 
+Customization
+======
+
+These properties of the menu can be customized
+
+    @property(nonatomic, strong)UIColor *textColor;
+    @property(nonatomic, strong)UIColor *highLightTextColor;
+    @property(nonatomic)RBMenuAllignment titleAllignment;
+     @property(nonatomic, strong)UIColor *backgroundColor;
+     
 Screenshots
 =======================
 
