@@ -21,7 +21,7 @@
 
 @property(nonatomic, strong)NSArray *menuItems;
 @property(nonatomic, strong)UITableView *menuContentTable;
-@property(nonatomic)RBMenuAllignment menuTitleAllignment;
+
 
 @end
 

@@ -34,7 +34,7 @@ typedef enum {
 @property(nonatomic)NSUInteger highLighedIndex;
 @property(nonatomic, strong)UIColor *textColor;
 @property(nonatomic, strong)UIColor *highLightTextColor;
-
+@property(nonatomic)RBMenuAllignment menuTitleAllignment;
 
 //create Menu with white background
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems WithTextAllignment:(RBMenuAllignment)titleAllignment;
