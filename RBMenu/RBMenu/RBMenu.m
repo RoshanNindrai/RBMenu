@@ -59,7 +59,7 @@ NSInteger const STARTINDEX            = 1;
     
     self = [[RBMenu alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), MENU_HEIGHT)];
     self.menuItems = menuItems;
-    self.menuTitleAllignment = titleAllignment;
+    self.titleAllignment = titleAllignment;
     self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.textColor = textColor;
     self.highLightTextColor = hightLightTextColor;
@@ -358,9 +358,9 @@ NSInteger const STARTINDEX            = 1;
 
 -(void)setMenuTitleAlligmentForCell:(UITableViewCell *)cell{
     
-    if (self.menuTitleAllignment) {
+    if (self.titleAllignment) {
         
-        switch (self.menuTitleAllignment) {
+        switch (self.titleAllignment) {
                 
             case RBMenuTextAllignmentLeft:
                 cell.textLabel.textAlignment = NSTextAlignmentLeft;
