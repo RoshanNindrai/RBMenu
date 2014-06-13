@@ -60,7 +60,7 @@ These properties of the menu can be customized
     @property(nonatomic, strong)UIColor *highLightTextColor;
     @property(nonatomic)RBMenuAllignment titleAllignment;
     @property(nonatomic, strong)UIColor *backgroundColor;
-     
+    @property(nonatomic)CGFloat height;
 Screenshots
 =======================
 
