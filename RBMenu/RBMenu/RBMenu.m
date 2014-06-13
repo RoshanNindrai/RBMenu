@@ -18,9 +18,7 @@
 
 @interface RBMenu ()
 
-@property(nonatomic, strong)UIColor *textColor;
-@property(nonatomic, strong)UIColor *highLightTextColor;
-@property(nonatomic, strong)UIColor *backGroundColor;
+
 @property(nonatomic, strong)NSArray *menuItems;
 @property(nonatomic, strong)UITableView *menuContentTable;
 @property(nonatomic)RBMenuAllignment menuTitleAllignment;
@@ -37,7 +35,7 @@ NSInteger const STARTINDEX            = 1;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.highLighedIndexPath = STARTINDEX;
+        self.highLighedIndex = STARTINDEX;
     }
     return self;
 }
@@ -65,7 +63,7 @@ NSInteger const STARTINDEX            = 1;
     self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.textColor = textColor;
     self.highLightTextColor = hightLightTextColor;
-    self.backGroundColor = backGroundColor;
+    self.backgroundColor = backGroundColor;
     self.currentMenuState = RBMenuClosedState;
     return self;
     
@@ -74,11 +72,11 @@ NSInteger const STARTINDEX            = 1;
 #pragma mark setter
 
 
--(void)setBackGroundColor:(UIColor *)backGroundColor{
+-(void)setBackgroundColor:(UIColor *)backgroundColor{
     
-    if(_backGroundColor != backGroundColor){
+    if(self.backgroundColor != backgroundColor){
         
-        [self.menuContentTable setBackgroundColor:backGroundColor];
+        [self.menuContentTable setBackgroundColor:backgroundColor];
         
     }
     
@@ -319,7 +317,7 @@ NSInteger const STARTINDEX            = 1;
         menuCell.textLabel.font = [UIFont fontWithName:MENUITEM_FONT_NAME size:MENU_ITEM_FONTSIZE];
         
     }
-    if(self.highLighedIndexPath == indexPath.row){
+    if(self.highLighedIndex == indexPath.row){
         
         menuCell.textLabel.textColor = _highLightTextColor;
         menuCell.textLabel.font = [UIFont fontWithName:MENUITEM_FONT_NAME size:MENU_ITEM_FONTSIZE + 5];
@@ -346,7 +344,7 @@ NSInteger const STARTINDEX            = 1;
         return;
     
     
-    self.highLighedIndexPath = indexPath.row;
+    self.highLighedIndex = indexPath.row;
     
     [self.menuContentTable reloadData];
     

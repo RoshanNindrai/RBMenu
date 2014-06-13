@@ -31,7 +31,10 @@ typedef enum {
 
 @property(nonatomic)RBMenuState currentMenuState;
 @property(nonatomic, weak)UIViewController *delegate;
-@property(nonatomic)NSUInteger highLighedIndexPath;
+@property(nonatomic)NSUInteger highLighedIndex;
+@property(nonatomic, strong)UIColor *textColor;
+@property(nonatomic, strong)UIColor *highLightTextColor;
+
 
 //create Menu with white background
 -(RBMenu *)initMenuWithItems:(NSArray *)menuItems WithTextAllignment:(RBMenuAllignment)titleAllignment;
