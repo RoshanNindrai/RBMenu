@@ -8,7 +8,7 @@ Installation
 
 The preferred method of installation is with CocoaPods. Add this line to the podfile
 
-    pod 'RBMenu',  '~>0.1.0'
+    pod 'RBMenu',  '~>0.1.1'
     
 If you want to install manually, copy the RBMenu .h and .m file to the project director.
 
