@@ -43,11 +43,11 @@ Once the item are created it is neccesary to add the items to the RBMenu. The de
     
 In the above code, the RBMenuItems are added to the menu and the allignment of the title along the menu is also mentioned while menu creation. Custom menu with user defined properties to the Menu can be performed by using the following method.
 
-    -(RBMenu *)initMenuWithItems:(NSArray *)menuItems
-               withTextColor:(UIColor *)textColor
+    -(RBMenu *)initWithItems:(NSArray *)menuItems
+               textColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
-             BackGroundColor:(UIColor *)backGroundColor
-          WithTextAllignment:(RBMenuAllignment)titleAllignment
+             backgroundColor:(UIColor *)backGroundColor
+           andTextAllignment:(RBMenuAllignment)titleAllignment;
           
 
 At present RBMenu supports three menu title allignments 
