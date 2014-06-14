@@ -3,6 +3,8 @@ RBMenu
 
 A menu for iOS that was inspired by Medium iOS APP
 
+![ScreenShot](https://github.com/RoshanNindrai/RBMenu/blob/master/Screen%20Shot/RBMenuDemo.gif)
+
 Installation
 ======
 
@@ -65,10 +67,6 @@ These properties of the menu can be customized
     @property(nonatomic)RBMenuAllignment titleAllignment;
     @property(nonatomic, strong)UIColor *backgroundColor;
     @property(nonatomic)CGFloat height;
-Screenshots
-=======================
-
-![ScreenShot](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/Screen%20Shot%202014-06-09%20at%2011.17.58%20AM.png)
 
 TODO
 ======
