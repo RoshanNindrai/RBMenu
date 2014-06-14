@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RBMenuItem.h"
 
 typedef enum {
     
@@ -25,7 +24,18 @@ typedef enum {
     
 }RBMenuAllignment;
 
-@class RBMenu;
+@interface RBMenuItem : NSObject
+
+
+//The title of the menu item
+@property(nonatomic, strong)NSString *title;
+//completion handler
+@property(nonatomic, strong)void (^completion)(BOOL);
+
+//initialization methods
+-(RBMenuItem *)initMenuItemWithTitle:(NSString *)title withCompletionHandler:(void (^)(BOOL))completion;
+
+@end
 
 @interface RBMenu : UIView<UITableViewDataSource, UITableViewDelegate>
 

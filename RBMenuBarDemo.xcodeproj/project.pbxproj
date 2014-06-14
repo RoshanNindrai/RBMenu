@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		6A07FF6B194608B00021F396 /* RBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07FF6A194608B00021F396 /* RBMenu.m */; };
 		6A07FF6C194608B00021F396 /* RBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07FF6A194608B00021F396 /* RBMenu.m */; };
-		6A07FF70194608B90021F396 /* RBMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07FF6F194608B90021F396 /* RBMenuItem.m */; };
-		6A07FF71194608B90021F396 /* RBMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07FF6F194608B90021F396 /* RBMenuItem.m */; };
 		6A6050401949F79300C1A719 /* ULNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A60503F1949F79300C1A719 /* ULNavigationController.m */; };
 		6A6050411949F79300C1A719 /* ULNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A60503F1949F79300C1A719 /* ULNavigationController.m */; };
 		6A6050441949F8AD00C1A719 /* ULSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6050431949F8AD00C1A719 /* ULSecondViewController.m */; };
@@ -46,8 +44,6 @@
 /* Begin PBXFileReference section */
 		6A07FF69194608B00021F396 /* RBMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBMenu.h; sourceTree = "<group>"; };
 		6A07FF6A194608B00021F396 /* RBMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBMenu.m; sourceTree = "<group>"; };
-		6A07FF6E194608B90021F396 /* RBMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBMenuItem.h; sourceTree = "<group>"; };
-		6A07FF6F194608B90021F396 /* RBMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBMenuItem.m; sourceTree = "<group>"; };
 		6A60503E1949F79300C1A719 /* ULNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULNavigationController.h; sourceTree = "<group>"; };
 		6A60503F1949F79300C1A719 /* ULNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULNavigationController.m; sourceTree = "<group>"; };
 		6A6050421949F8AD00C1A719 /* ULSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULSecondViewController.h; sourceTree = "<group>"; };
@@ -107,16 +103,6 @@
 			);
 			name = RBMenu;
 			path = RBMenu/RBMenu;
-			sourceTree = "<group>";
-		};
-		6A07FF6D194608B90021F396 /* RBMenuItem */ = {
-			isa = PBXGroup;
-			children = (
-				6A07FF6E194608B90021F396 /* RBMenuItem.h */,
-				6A07FF6F194608B90021F396 /* RBMenuItem.m */,
-			);
-			name = RBMenuItem;
-			path = RBMenu/RBMenuItem;
 			sourceTree = "<group>";
 		};
 		6AA3614E18D32E9900ACF474 = {
@@ -202,7 +188,6 @@
 		6AA3618F18D32E9F00ACF474 /* RBMenuBar */ = {
 			isa = PBXGroup;
 			children = (
-				6A07FF6D194608B90021F396 /* RBMenuItem */,
 				6A07FF68194608B00021F396 /* RBMenu */,
 			);
 			name = RBMenuBar;
@@ -311,7 +296,6 @@
 				6AB35782194A0649001CC19E /* ULFirstViewController.m in Sources */,
 				6A6050401949F79300C1A719 /* ULNavigationController.m in Sources */,
 				6AA3616B18D32E9900ACF474 /* ULAppDelegate.m in Sources */,
-				6A07FF70194608B90021F396 /* RBMenuItem.m in Sources */,
 				6A6050441949F8AD00C1A719 /* ULSecondViewController.m in Sources */,
 				6AA3617118D32E9900ACF474 /* ULRootViewController.m in Sources */,
 			);
@@ -324,7 +308,6 @@
 				6A6050411949F79300C1A719 /* ULNavigationController.m in Sources */,
 				6A07FF6C194608B00021F396 /* RBMenu.m in Sources */,
 				6A6050451949F8AD00C1A719 /* ULSecondViewController.m in Sources */,
-				6A07FF71194608B90021F396 /* RBMenuItem.m in Sources */,
 				6AB35783194A0649001CC19E /* ULFirstViewController.m in Sources */,
 				6AA3618618D32E9900ACF474 /* RBMenuBarDemoTests.m in Sources */,
 			);

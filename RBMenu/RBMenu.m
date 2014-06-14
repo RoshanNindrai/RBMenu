@@ -15,6 +15,29 @@
 #define VELOCITY_TRESHOLD       1000
 #define AUTOCLOSE_VELOCITY      1200
 
+@interface RBMenuItem ()
+
+//the menuButton
+@property(strong, nonatomic)UIButton *menuButton;
+
+
+@end
+
+@implementation RBMenuItem
+
+
+-(RBMenuItem *)initMenuItemWithTitle:(NSString *)title
+               withCompletionHandler:(void (^)(BOOL))completion;
+{
+    
+    self.title = title;
+    self.completion = completion;
+    return self;
+    
+}
+
+@end
+
 @interface RBMenu ()
 
 
