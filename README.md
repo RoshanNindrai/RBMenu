@@ -70,11 +70,6 @@ These properties of the menu can be customized
     @property(nonatomic)CGFloat height;
     
 
-Screenshots
-======
-
-![screenshot](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/Screen_Shot.png)
-
 
 TODO
 ======
