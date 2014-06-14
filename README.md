@@ -3,8 +3,7 @@ RBMenu
 
 A menu for iOS that was inspired by Medium iOS APP
 
-https://github.com/RoshanNindrai/RBMenu/blob/master/Screen%20Shot/RBMenuDemo.gif
-
+<IMG https://github.com/RoshanNindrai/RBMenu/blob/master/Screen%20Shot/RBMenuDemo.gif>
 Installation
 ======
 
