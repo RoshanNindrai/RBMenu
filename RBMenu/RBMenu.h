@@ -40,7 +40,6 @@ typedef enum {
 @interface RBMenu : UIView<UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic)RBMenuState currentMenuState;
-@property(nonatomic, weak)UIViewController *delegate;
 @property(nonatomic)NSUInteger highLighedIndex;
 @property(nonatomic)CGFloat height;
 @property(nonatomic, strong)UIColor *textColor;
@@ -48,13 +47,14 @@ typedef enum {
 @property(nonatomic)RBMenuAllignment titleAllignment;
 
 //create Menu with white background
--(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment;
+-(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment forViewController:(UIViewController *)viewController;
 
 -(RBMenu *)initWithItems:(NSArray *)menuItems
                textColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
              backgroundColor:(UIColor *)backGroundColor
-           andTextAllignment:(RBMenuAllignment)titleAllignment;
+           andTextAllignment:(RBMenuAllignment)titleAllignment
+           forViewController:(UIViewController *)viewController;
 
 -(void)showMenu;
 

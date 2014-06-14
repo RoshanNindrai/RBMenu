@@ -43,7 +43,7 @@
 
 @property(nonatomic, strong)NSArray *menuItems;
 @property(nonatomic, strong)UITableView *menuContentTable;
-
+@property(nonatomic, weak)UIViewController *contentController;
 
 @end
 
@@ -63,14 +63,17 @@ NSInteger const STARTINDEX            = 1;
     return self;
 }
 
--(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment
+-(RBMenu *)initWithItems:(NSArray *)menuItems
+       andTextAllignment:(RBMenuAllignment)titleAllignment
+       forViewController:(UIViewController *)viewController
 {
     
     return [self initWithItems:menuItems
                      textColor:[UIColor grayColor]
                hightLightTextColor:[UIColor blackColor]
                    backgroundColor:[UIColor whiteColor]
-                 andTextAllignment:titleAllignment];
+                 andTextAllignment:titleAllignment
+                forViewController:viewController];
 }
 
 -(RBMenu *)initWithItems:(NSArray *)menuItems
@@ -78,6 +81,7 @@ NSInteger const STARTINDEX            = 1;
          hightLightTextColor:(UIColor *)hightLightTextColor
              backgroundColor:(UIColor *)backGroundColor
            andTextAllignment:(RBMenuAllignment)titleAllignment
+           forViewController:(UIViewController *)viewController
 {
     
     self = [[RBMenu alloc] init];
@@ -89,6 +93,7 @@ NSInteger const STARTINDEX            = 1;
     self.highLightTextColor = hightLightTextColor;
     self.backgroundColor = backGroundColor;
     self.currentMenuState = RBMenuClosedState;
+    self.contentController = viewController;
     return self;
     
 }
@@ -119,21 +124,21 @@ NSInteger const STARTINDEX            = 1;
     
 }
 
--(void)setDelegate:(UIViewController *)delegate{
+-(void)setContentController:(UIViewController *)contentController{
     
-    if(_delegate != delegate){
+    if(_contentController != contentController){
         
-        if(delegate.navigationController)
-            _delegate = delegate.navigationController;
+        if(contentController.navigationController)
+            _contentController = contentController.navigationController;
         else
-            _delegate = delegate;
+            _contentController = contentController;
         
         
         if(PANGESTUREENABLE)
-            [_delegate.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
+            [_contentController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
         
         [self setShadowProperties];
-        [_delegate.view setAutoresizingMask:UIViewAutoresizingNone];
+        [_contentController.view setAutoresizingMask:UIViewAutoresizingNone];
         [[[[UIApplication sharedApplication] delegate] window] insertSubview:self atIndex:0];
         
     }
@@ -161,11 +166,11 @@ NSInteger const STARTINDEX            = 1;
 
 -(void)setShadowProperties{
     
-    [_delegate.view.layer setShadowOffset:CGSizeMake(0, 1)];
-    [_delegate.view.layer setShadowRadius:4.0];
-    [_delegate.view.layer setShadowColor:[UIColor lightGrayColor].CGColor];
-    [_delegate.view.layer setShadowOpacity:0.4];
-    [_delegate.view.layer setShadowPath:[UIBezierPath bezierPathWithRect:_delegate.view.bounds].CGPath];
+    [_contentController.view.layer setShadowOffset:CGSizeMake(0, 1)];
+    [_contentController.view.layer setShadowRadius:4.0];
+    [_contentController.view.layer setShadowColor:[UIColor lightGrayColor].CGColor];
+    [_contentController.view.layer setShadowOpacity:0.4];
+    [_contentController.view.layer setShadowPath:[UIBezierPath bezierPathWithRect:_contentController.view.bounds].CGPath];
     
 }
 
@@ -191,7 +196,7 @@ NSInteger const STARTINDEX            = 1;
     
     if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState){
         
-        self.delegate.view.frame = CGRectOffset(self.delegate.view.frame, 0, - _height + MENU_BOUNCE_OFFSET);
+        _contentController.view.frame = CGRectOffset(_contentController.view.frame, 0, - _height + MENU_BOUNCE_OFFSET);
         self.currentMenuState = RBMenuClosedState;
         
     }
@@ -213,9 +218,9 @@ NSInteger const STARTINDEX            = 1;
             self.currentMenuState = RBMenuDisplayingState;
             viewCenter.y = ABS(viewCenter.y + translation.y);
             if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y < [UIScreen mainScreen].bounds.size.height / 2 + _height - MENU_BOUNCE_OFFSET )
-                self.delegate.view.center = viewCenter;
+                _contentController.view.center = viewCenter;
             
-            [panRecognizer setTranslation:CGPointZero inView:self.delegate.view];
+            [panRecognizer setTranslation:CGPointZero inView:_contentController.view];
             
         }
         
@@ -246,12 +251,12 @@ NSInteger const STARTINDEX            = 1;
         [UIView animateWithDuration:.2 animations:^{
             
             //pushing the content controller down
-            self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height);
+            _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height);
         }completion:^(BOOL finished){
             
             [UIView animateWithDuration:.2 animations:^{
                 
-                self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET);
+                _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET);
                 
             }completion:^(BOOL finished){
                 
@@ -273,7 +278,7 @@ NSInteger const STARTINDEX            = 1;
     [UIView animateWithDuration:.2 animations:^{
         
         //pulling the contentController up
-        self.delegate.view.center = CGPointMake(self.delegate.view.center.x, self.delegate.view.center.y + MENU_BOUNCE_OFFSET);
+        _contentController.view.center = CGPointMake(_contentController.view.center.x, _contentController.view.center.y + MENU_BOUNCE_OFFSET);
         
         
     }completion:^(BOOL finished){
@@ -281,7 +286,7 @@ NSInteger const STARTINDEX            = 1;
         [UIView animateWithDuration:.2 animations:^{
             
             //pushing the menu controller down
-            self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
+            _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
             
         }completion:^(BOOL finished){
             
@@ -302,9 +307,9 @@ NSInteger const STARTINDEX            = 1;
     
     CGFloat viewCenterY = [[UIScreen mainScreen] bounds].size.height / 2;
     self.currentMenuState = RBMenuDisplayingState;
-    [UIView animateWithDuration:((self.delegate.view.center.y - viewCenterY) / velocity)  animations:^{
+    [UIView animateWithDuration:((_contentController.view.center.y - viewCenterY) / velocity)  animations:^{
         
-        self.delegate.view.center = CGPointMake(self.delegate.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
+        _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
         
     }completion:^(BOOL completed){
         
@@ -319,9 +324,9 @@ NSInteger const STARTINDEX            = 1;
     
     CGFloat viewCenterY = [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET;
     self.currentMenuState = RBMenuDisplayingState;
-    [UIView animateWithDuration:((viewCenterY - self.delegate.view.center.y) / velocity)  animations:^{
+    [UIView animateWithDuration:((viewCenterY - _contentController.view.center.y) / velocity)  animations:^{
         
-        self.delegate.view.center = CGPointMake(self.delegate.view.center.x, viewCenterY);
+        _contentController.view.center = CGPointMake(_contentController.view.center.x, viewCenterY);
         
     }completion:^(BOOL completed){
         
