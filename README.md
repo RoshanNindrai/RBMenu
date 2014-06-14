@@ -3,8 +3,8 @@ RBMenu
 
 A menu for iOS that was inspired by Medium iOS APP
 
-![Output sample](https://github.com/ajasmin/camstudio-mousedown-highlight/raw/master/android_vid_test.gif)
-https://github.com/RoshanNindrai/RBMenu/blob/master/Screen%20Shot/RBMenuDemo.gif)
+![Output sample](https://github.com/RoshanNindrai/RBMenu/blob/master/Screen%20Shot/RBMenuDemo.giff)
+
 
 Installation
 ======
