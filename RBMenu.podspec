@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name            = 'RBMenuBarDemo'
+  s.name            = 'RBMenu'
   s.version         = '0.0.1'
   s.license         = 'MIT'
   s.platform        = :ios, '7.0'
