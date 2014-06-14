@@ -63,20 +63,20 @@ NSInteger const STARTINDEX            = 1;
     return self;
 }
 
--(RBMenu *)initMenuWithItems:(NSArray *)menuItems WithTextAllignment:(RBMenuAllignment)titleAllignment
+-(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment
 {
     
-    return [self initMenuWithItems:menuItems
-                     withTextColor:[UIColor grayColor]
+    return [self initWithItems:menuItems
+                     textColor:[UIColor grayColor]
                hightLightTextColor:[UIColor blackColor]
-                   backGroundColor:[UIColor whiteColor]
+                   backgroundColor:[UIColor whiteColor]
                  andTextAllignment:titleAllignment];
 }
 
--(RBMenu *)initMenuWithItems:(NSArray *)menuItems
-               withTextColor:(UIColor *)textColor
+-(RBMenu *)initWithItems:(NSArray *)menuItems
+               textColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
-             backGroundColor:(UIColor *)backGroundColor
+             backgroundColor:(UIColor *)backGroundColor
            andTextAllignment:(RBMenuAllignment)titleAllignment
 {
     

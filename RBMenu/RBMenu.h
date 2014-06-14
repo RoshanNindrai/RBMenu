@@ -48,12 +48,12 @@ typedef enum {
 @property(nonatomic)RBMenuAllignment titleAllignment;
 
 //create Menu with white background
--(RBMenu *)initMenuWithItems:(NSArray *)menuItems WithTextAllignment:(RBMenuAllignment)titleAllignment;
+-(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment;
 
--(RBMenu *)initMenuWithItems:(NSArray *)menuItems
-               withTextColor:(UIColor *)textColor
+-(RBMenu *)initWithItems:(NSArray *)menuItems
+               textColor:(UIColor *)textColor
          hightLightTextColor:(UIColor *)hightLightTextColor
-             backGroundColor:(UIColor *)backGroundColor
+             backgroundColor:(UIColor *)backGroundColor
            andTextAllignment:(RBMenuAllignment)titleAllignment;
 
 -(void)showMenu;
