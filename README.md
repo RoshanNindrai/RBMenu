@@ -6,7 +6,11 @@ A menu for iOS that was inspired by Medium iOS APP
 Installation
 ======
 
-The following controller can be added to yout project by copying the RBMenu folder along with RBMenuItems folder. Cocoapods support will be added in the future.
+The preferred method of installation is with CocoaPods. Add this line to the podfile
+
+    pod 'RBMenu',  '~>0.1.0'
+    
+If you want to install manually, copy the RBMenu .h and .m file to the project director.
 
 Usage
 ======
