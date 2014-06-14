@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A07FF6B194608B00021F396 /* RBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07FF6A194608B00021F396 /* RBMenu.m */; };
-		6A07FF6C194608B00021F396 /* RBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07FF6A194608B00021F396 /* RBMenu.m */; };
+		6A2C969D194CA55C00012D07 /* RBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C969C194CA55C00012D07 /* RBMenu.m */; };
+		6A2C969E194CA55C00012D07 /* RBMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C969C194CA55C00012D07 /* RBMenu.m */; };
 		6A6050401949F79300C1A719 /* ULNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A60503F1949F79300C1A719 /* ULNavigationController.m */; };
 		6A6050411949F79300C1A719 /* ULNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A60503F1949F79300C1A719 /* ULNavigationController.m */; };
 		6A6050441949F8AD00C1A719 /* ULSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6050431949F8AD00C1A719 /* ULSecondViewController.m */; };
@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6A07FF69194608B00021F396 /* RBMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBMenu.h; sourceTree = "<group>"; };
-		6A07FF6A194608B00021F396 /* RBMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBMenu.m; sourceTree = "<group>"; };
+		6A2C969B194CA55C00012D07 /* RBMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RBMenu.h; path = RBMenu/RBMenu.h; sourceTree = SOURCE_ROOT; };
+		6A2C969C194CA55C00012D07 /* RBMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RBMenu.m; path = RBMenu/RBMenu.m; sourceTree = SOURCE_ROOT; };
 		6A60503E1949F79300C1A719 /* ULNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULNavigationController.h; sourceTree = "<group>"; };
 		6A60503F1949F79300C1A719 /* ULNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULNavigationController.m; sourceTree = "<group>"; };
 		6A6050421949F8AD00C1A719 /* ULSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULSecondViewController.h; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 		6A07FF68194608B00021F396 /* RBMenu */ = {
 			isa = PBXGroup;
 			children = (
-				6A07FF69194608B00021F396 /* RBMenu.h */,
-				6A07FF6A194608B00021F396 /* RBMenu.m */,
+				6A2C969B194CA55C00012D07 /* RBMenu.h */,
+				6A2C969C194CA55C00012D07 /* RBMenu.m */,
 			);
 			name = RBMenu;
 			path = RBMenu/RBMenu;
@@ -291,8 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A07FF6B194608B00021F396 /* RBMenu.m in Sources */,
 				6AA3616718D32E9900ACF474 /* main.m in Sources */,
+				6A2C969D194CA55C00012D07 /* RBMenu.m in Sources */,
 				6AB35782194A0649001CC19E /* ULFirstViewController.m in Sources */,
 				6A6050401949F79300C1A719 /* ULNavigationController.m in Sources */,
 				6AA3616B18D32E9900ACF474 /* ULAppDelegate.m in Sources */,
@@ -306,8 +306,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A6050411949F79300C1A719 /* ULNavigationController.m in Sources */,
-				6A07FF6C194608B00021F396 /* RBMenu.m in Sources */,
 				6A6050451949F8AD00C1A719 /* ULSecondViewController.m in Sources */,
+				6A2C969E194CA55C00012D07 /* RBMenu.m in Sources */,
 				6AB35783194A0649001CC19E /* ULFirstViewController.m in Sources */,
 				6AA3618618D32E9900ACF474 /* RBMenuBarDemoTests.m in Sources */,
 			);
