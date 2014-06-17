@@ -11,7 +11,7 @@ Installation
 
 The preferred method of installation is with CocoaPods. Add this line to the podfile
 
-    pod 'RBMenu',  '~>0.1.2'
+    pod 'RBMenu',  '~>0.1.3'
     
 If you want to install manually, copy the RBMenu .h and .m file to the project director.
 
@@ -61,11 +61,12 @@ Customization
 
 These properties of the menu can be customized
 
+    @property(nonatomic)CGFloat          height;
     @property(nonatomic, strong)UIColor *textColor;
+    @property(nonatomic, strong)UIFont  *titleFont;
     @property(nonatomic, strong)UIColor *highLightTextColor;
     @property(nonatomic)RBMenuAllignment titleAllignment;
-    @property(nonatomic, strong)UIColor *backgroundColor;
-    @property(nonatomic)CGFloat height;
+
     
 
 Screenshot
