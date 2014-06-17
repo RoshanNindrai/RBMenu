@@ -49,9 +49,9 @@
 
 @implementation RBMenu
 
-NSString *const MENUITEM_FONT_NAME   = @"HelveticaNeue-Light";
-NSInteger const MENU_ITEM_FONTSIZE    = 25;
-NSInteger const STARTINDEX            = 1;
+NSString *const MENU_ITEM_DEFAULT_FONTNAME    = @"HelveticaNeue-Light";
+NSInteger const MENU_ITEM_DEFAULT_FONTSIZE    = 25;
+NSInteger const STARTINDEX                    = 1;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -63,6 +63,8 @@ NSInteger const STARTINDEX            = 1;
     return self;
 }
 
+#pragma mark initializers
+
 -(RBMenu *)initWithItems:(NSArray *)menuItems
        andTextAllignment:(RBMenuAllignment)titleAllignment
        forViewController:(UIViewController *)viewController
@@ -70,18 +72,18 @@ NSInteger const STARTINDEX            = 1;
     
     return [self initWithItems:menuItems
                      textColor:[UIColor grayColor]
-               hightLightTextColor:[UIColor blackColor]
-                   backgroundColor:[UIColor whiteColor]
-                 andTextAllignment:titleAllignment
-                forViewController:viewController];
+           hightLightTextColor:[UIColor blackColor]
+               backgroundColor:[UIColor whiteColor]
+             andTextAllignment:titleAllignment
+             forViewController:viewController];
 }
 
 -(RBMenu *)initWithItems:(NSArray *)menuItems
                textColor:(UIColor *)textColor
-         hightLightTextColor:(UIColor *)hightLightTextColor
-             backgroundColor:(UIColor *)backGroundColor
-           andTextAllignment:(RBMenuAllignment)titleAllignment
-           forViewController:(UIViewController *)viewController
+     hightLightTextColor:(UIColor *)hightLightTextColor
+         backgroundColor:(UIColor *)backGroundColor
+       andTextAllignment:(RBMenuAllignment)titleAllignment
+       forViewController:(UIViewController *)viewController
 {
     
     self = [[RBMenu alloc] init];
@@ -94,6 +96,7 @@ NSInteger const STARTINDEX            = 1;
     self.backgroundColor = backGroundColor;
     self.currentMenuState = RBMenuClosedState;
     self.contentController = viewController;
+    self.titleFont = [UIFont fontWithName:MENU_ITEM_DEFAULT_FONTNAME size:MENU_ITEM_DEFAULT_FONTSIZE];
     return self;
     
 }
@@ -135,7 +138,8 @@ NSInteger const STARTINDEX            = 1;
         
         
         if(PANGESTUREENABLE)
-            [_contentController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)]];
+            [_contentController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]
+                                                           initWithTarget:self action:@selector(didPan:)]];
         
         [self setShadowProperties];
         [_contentController.view setAutoresizingMask:UIViewAutoresizingNone];
@@ -170,7 +174,8 @@ NSInteger const STARTINDEX            = 1;
     [_contentController.view.layer setShadowRadius:4.0];
     [_contentController.view.layer setShadowColor:[UIColor lightGrayColor].CGColor];
     [_contentController.view.layer setShadowOpacity:0.4];
-    [_contentController.view.layer setShadowPath:[UIBezierPath bezierPathWithRect:_contentController.view.bounds].CGPath];
+    [_contentController.view.layer setShadowPath:[UIBezierPath
+                                                  bezierPathWithRect:_contentController.view.bounds].CGPath];
     
 }
 
@@ -196,7 +201,8 @@ NSInteger const STARTINDEX            = 1;
     
     if(self.currentMenuState == RBMenuShownState || self.currentMenuState == RBMenuDisplayingState){
         
-        _contentController.view.frame = CGRectOffset(_contentController.view.frame, 0, - _height + MENU_BOUNCE_OFFSET);
+        _contentController.view.frame = CGRectOffset(_contentController.view.frame, 0,
+                                                     - _height + MENU_BOUNCE_OFFSET);
         self.currentMenuState = RBMenuClosedState;
         
     }
@@ -213,11 +219,14 @@ NSInteger const STARTINDEX            = 1;
        UIGestureRecognizerStateChanged){
         CGPoint translation = [panRecognizer translationInView:panRecognizer.view.superview];
         
-        if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y <= (([[UIScreen mainScreen] bounds].size.height / 2 + _height) - MENU_BOUNCE_OFFSET)){
+        if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 &&
+           viewCenter.y <= (([[UIScreen mainScreen] bounds].size.height / 2 + _height) - MENU_BOUNCE_OFFSET)){
             
             self.currentMenuState = RBMenuDisplayingState;
             viewCenter.y = ABS(viewCenter.y + translation.y);
-            if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 && viewCenter.y < [UIScreen mainScreen].bounds.size.height / 2 + _height - MENU_BOUNCE_OFFSET )
+            
+            if(viewCenter.y >= [[UIScreen mainScreen] bounds].size.height / 2 &&
+               viewCenter.y < [UIScreen mainScreen].bounds.size.height / 2 + _height - MENU_BOUNCE_OFFSET)
                 _contentController.view.center = viewCenter;
             
             [panRecognizer setTranslation:CGPointZero inView:_contentController.view];
@@ -242,7 +251,7 @@ NSInteger const STARTINDEX            = 1;
     
 }
 
-#pragma mark animation
+#pragma mark animation and menu operations
 
 -(void)animateMenuOpening{
     
@@ -251,12 +260,14 @@ NSInteger const STARTINDEX            = 1;
         [UIView animateWithDuration:.2 animations:^{
             
             //pushing the content controller down
-            _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height);
+            _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                         [[UIScreen mainScreen] bounds].size.height / 2 + _height);
         }completion:^(BOOL finished){
             
             [UIView animateWithDuration:.2 animations:^{
                 
-                _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET);
+                _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                             [[UIScreen mainScreen] bounds].size.height / 2 + _height - MENU_BOUNCE_OFFSET);
                 
             }completion:^(BOOL finished){
                 
@@ -278,7 +289,8 @@ NSInteger const STARTINDEX            = 1;
     [UIView animateWithDuration:.2 animations:^{
         
         //pulling the contentController up
-        _contentController.view.center = CGPointMake(_contentController.view.center.x, _contentController.view.center.y + MENU_BOUNCE_OFFSET);
+        _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                     _contentController.view.center.y + MENU_BOUNCE_OFFSET);
         
         
     }completion:^(BOOL finished){
@@ -286,7 +298,8 @@ NSInteger const STARTINDEX            = 1;
         [UIView animateWithDuration:.2 animations:^{
             
             //pushing the menu controller down
-            _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
+            _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                         [[UIScreen mainScreen] bounds].size.height / 2);
             
         }completion:^(BOOL finished){
             
@@ -309,7 +322,8 @@ NSInteger const STARTINDEX            = 1;
     self.currentMenuState = RBMenuDisplayingState;
     [UIView animateWithDuration:((_contentController.view.center.y - viewCenterY) / velocity)  animations:^{
         
-        _contentController.view.center = CGPointMake(_contentController.view.center.x, [[UIScreen mainScreen] bounds].size.height / 2);
+        _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                     [[UIScreen mainScreen] bounds].size.height / 2);
         
     }completion:^(BOOL completed){
         
@@ -356,19 +370,19 @@ NSInteger const STARTINDEX            = 1;
         menuCell.backgroundColor = [UIColor clearColor];
         menuCell.selectionStyle = UITableViewCellSelectionStyleNone;
         menuCell.textLabel.textColor = self.textColor;
-        menuCell.textLabel.font = [UIFont fontWithName:MENUITEM_FONT_NAME size:MENU_ITEM_FONTSIZE];
+        menuCell.textLabel.font = self.titleFont;
         
     }
     if(self.highLighedIndex == indexPath.row){
         
         menuCell.textLabel.textColor = _highLightTextColor;
-        menuCell.textLabel.font = [UIFont fontWithName:MENUITEM_FONT_NAME size:MENU_ITEM_FONTSIZE + 5];
+        menuCell.textLabel.font = [self.titleFont fontWithSize:self.titleFont.pointSize + 5];
         
     }
     else{
         
         menuCell.textLabel.textColor = self.textColor;
-        menuCell.textLabel.font = [UIFont fontWithName:MENUITEM_FONT_NAME size:MENU_ITEM_FONTSIZE];
+        menuCell.textLabel.font = self.titleFont;
         
     }
     

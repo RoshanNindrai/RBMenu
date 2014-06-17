@@ -39,10 +39,11 @@ typedef enum {
 
 @interface RBMenu : UIView<UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic)RBMenuState currentMenuState;
-@property(nonatomic)NSUInteger highLighedIndex;
-@property(nonatomic)CGFloat height;
+@property(nonatomic)RBMenuState      currentMenuState;
+@property(nonatomic)NSUInteger       highLighedIndex;
+@property(nonatomic)CGFloat          height;
 @property(nonatomic, strong)UIColor *textColor;
+@property(nonatomic, strong)UIFont  *titleFont;
 @property(nonatomic, strong)UIColor *highLightTextColor;
 @property(nonatomic)RBMenuAllignment titleAllignment;
 
