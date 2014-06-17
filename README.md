@@ -39,8 +39,6 @@ create each menu item by creating an object of RBMenuItems class For this demo p
 Once the item are created it is neccesary to add the items to the RBMenu. The delegate needs to be a subclass of UIViewController
 
      _menu = [[RBMenu alloc] initWithItems:@[item, item2] andTextAllignment:RBMenuTextAllignmentLeft forViewController:self];
-    _menu.delegate = self;
-    
 In the above code, the RBMenuItems are added to the menu and the allignment of the title along the menu is also mentioned while menu creation. Custom menu with user defined properties to the Menu can be performed by using the following method.
 
     -(RBMenu *)initWithItems:(NSArray *)menuItems
