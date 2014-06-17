@@ -385,13 +385,9 @@ NSInteger const STARTINDEX            = 1;
     if(indexPath.row < STARTINDEX || indexPath.row > [self.menuItems count] - 1 + STARTINDEX)
         return;
     
-    
     self.highLighedIndex = indexPath.row;
-    
     [self.menuContentTable reloadData];
-    
     RBMenuItem *selectedItem = [self.menuItems objectAtIndex:indexPath.row - STARTINDEX];
-    
     [self animateMenuClosingWithCompletion:selectedItem.completion];
     
 }
