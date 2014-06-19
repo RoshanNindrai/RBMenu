@@ -4,6 +4,7 @@ RBMenu
 A menu for iOS that was inspired by Medium iOS APP
 
 ![Output gif](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/RBMenuDemo.gif)
+![Output gif2](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/RBMenuDemo_custom.gif)
 
 
 Installation
