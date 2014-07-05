@@ -54,7 +54,8 @@
     
 	// Do any additional setup after loading the view, typically from a nib.
     _menu = [[RBMenu alloc] initWithItems:@[item, item2] andTextAllignment:RBMenuTextAllignmentLeft forViewController:self];
-
+    
+    
     
 }
 

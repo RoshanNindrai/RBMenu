@@ -58,6 +58,8 @@ NSInteger const STARTINDEX                    = 1;
     self = [super initWithFrame:frame];
     if (self) {
         self.highLighedIndex = STARTINDEX;
+        self.currentMenuState = RBMenuClosedState;
+        self.titleFont = [UIFont fontWithName:MENU_ITEM_DEFAULT_FONTNAME size:MENU_ITEM_DEFAULT_FONTSIZE];
         self.height = 260;
     }
     return self;
@@ -88,15 +90,14 @@ NSInteger const STARTINDEX                    = 1;
     
     self = [[RBMenu alloc] init];
     self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), self.height);
+    self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.menuItems = menuItems;
     self.titleAllignment = titleAllignment;
-    self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.textColor = textColor;
     self.highLightTextColor = hightLightTextColor;
     self.backgroundColor = backGroundColor;
-    self.currentMenuState = RBMenuClosedState;
     self.contentController = viewController;
-    self.titleFont = [UIFont fontWithName:MENU_ITEM_DEFAULT_FONTNAME size:MENU_ITEM_DEFAULT_FONTSIZE];
+    
     return self;
     
 }
@@ -370,26 +371,34 @@ NSInteger const STARTINDEX                    = 1;
         menuCell.backgroundColor = [UIColor clearColor];
         menuCell.selectionStyle = UITableViewCellSelectionStyleNone;
         menuCell.textLabel.textColor = self.textColor;
-        menuCell.textLabel.font = self.titleFont;
+        [menuCell.textLabel setFont:self.titleFont];
         
     }
+  
+    if(indexPath.row >= STARTINDEX && indexPath.row <= ([self.menuItems count] - 1 + STARTINDEX))
+        menuItem = (RBMenuItem *)[self.menuItems objectAtIndex:indexPath.row - STARTINDEX];
+            menuCell.textLabel.text =  menuItem.title;
+    
+    
+    return menuCell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if(self.highLighedIndex == indexPath.row){
         
-        menuCell.textLabel.textColor = _highLightTextColor;
-        menuCell.textLabel.font = [self.titleFont fontWithSize:self.titleFont.pointSize + 5];
+        cell.textLabel.textColor = _highLightTextColor;
+        [cell.textLabel setFont:[self.titleFont fontWithSize:self.titleFont.pointSize + 5]];
         
     }
     else{
         
-        menuCell.textLabel.textColor = self.textColor;
-        menuCell.textLabel.font = self.titleFont;
+        cell.textLabel.textColor = self.textColor;
+        [cell.textLabel setFont:self.titleFont];
         
     }
     
-    if(indexPath.row >= STARTINDEX && indexPath.row <= ([self.menuItems count] - 1 + STARTINDEX))
-        menuItem = (RBMenuItem *)[self.menuItems objectAtIndex:indexPath.row - STARTINDEX];
-    menuCell.textLabel.text =  menuItem.title;
-    return menuCell;
     
 }
 
