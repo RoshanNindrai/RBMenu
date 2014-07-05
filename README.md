@@ -1,10 +1,10 @@
 RBMenu
 ======
 
-A menu for iOS that was inspired by Medium iOS APP
+A menu for iOS that was inspired by [Medium iOS App](https://itunes.apple.com/us/app/medium/id828256236)
 
 ![Output gif](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/RBMenuDemo.gif)
-![Output gif2](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/RBMenuDemo_custom.gif)
+![Output gif2](https://raw.githubusercontent.com/RoshanNindrai/RBMenu/master/Screen%20Shot/RBMenuDemo_custom_black.gif)
 
 
 Installation
