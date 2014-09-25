@@ -11,7 +11,6 @@
 
 #define CELLIDENTIFIER          @"menubutton"
 #define MENU_BOUNCE_OFFSET      10
-#define PANGESTUREENABLE        1
 #define VELOCITY_TRESHOLD       1000
 #define AUTOCLOSE_VELOCITY      1200
 
@@ -32,8 +31,16 @@
     
     self.title = title;
     self.completion = completion;
+    self.isMenuClose = YES;
     return self;
     
+}
+
+-(RBMenuItem *)initMenuItemWithTitle:(NSString *)title withCompletionHandler:(void (^)(BOOL))completion withIsCloseMenu:(BOOL)isCloseMenu{
+    self.title = title;
+    self.completion = completion;
+    self.isMenuClose = isCloseMenu;
+    return self;
 }
 
 @end
@@ -89,6 +96,7 @@ NSInteger const STARTINDEX                    = 1;
 {
     
     self = [[RBMenu alloc] init];
+    self.isPangeStureenabel = YES;
     self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), self.height);
     self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.menuItems = menuItems;
@@ -138,7 +146,7 @@ NSInteger const STARTINDEX                    = 1;
             _contentController = contentController;
         
         
-        if(PANGESTUREENABLE)
+        if(self.isPangeStureenabel)
             [_contentController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]
                                                            initWithTarget:self action:@selector(didPan:)]];
         
@@ -283,31 +291,40 @@ NSInteger const STARTINDEX                    = 1;
     
 }
 
-
-
 -(void)animateMenuClosingWithCompletion:(void (^)(BOOL))completion{
+    [self animateMenuClosingWithCompletion:completion WithIsCloseMenu:YES];
+}
+
+
+-(void)animateMenuClosingWithCompletion:(void (^)(BOOL))completion WithIsCloseMenu:(BOOL)isCloseMenu{
     
     [UIView animateWithDuration:.2 animations:^{
         
-        //pulling the contentController up
-        _contentController.view.center = CGPointMake(_contentController.view.center.x,
-                                                     _contentController.view.center.y + MENU_BOUNCE_OFFSET);
-        
+        if (isCloseMenu) {
+            //pulling the contentController up
+            _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                         _contentController.view.center.y + MENU_BOUNCE_OFFSET);
+        }
         
     }completion:^(BOOL finished){
         
         [UIView animateWithDuration:.2 animations:^{
             
-            //pushing the menu controller down
-            _contentController.view.center = CGPointMake(_contentController.view.center.x,
-                                                         [[UIScreen mainScreen] bounds].size.height / 2);
+            if (isCloseMenu) {
+                //pushing the menu controller down
+                _contentController.view.center = CGPointMake(_contentController.view.center.x,
+                                                             [[UIScreen mainScreen] bounds].size.height / 2);
+            }
             
         }completion:^(BOOL finished){
             
             if(finished){
-                self.currentMenuState = RBMenuClosedState;
+                if (isCloseMenu) {
+                    self.currentMenuState = RBMenuClosedState;
+                }
                 if(completion)
                     completion(finished);
+                
             }
             
         }];
@@ -390,7 +407,6 @@ NSInteger const STARTINDEX                    = 1;
         
         cell.textLabel.textColor = _highLightTextColor;
         [cell.textLabel setFont:[self.titleFont fontWithSize:self.titleFont.pointSize + 5]];
-        
     }
     else{
         
@@ -411,7 +427,7 @@ NSInteger const STARTINDEX                    = 1;
     self.highLighedIndex = indexPath.row;
     [self.menuContentTable reloadData];
     RBMenuItem *selectedItem = [self.menuItems objectAtIndex:indexPath.row - STARTINDEX];
-    [self animateMenuClosingWithCompletion:selectedItem.completion];
+    [self animateMenuClosingWithCompletion:selectedItem.completion WithIsCloseMenu:selectedItem.isMenuClose];
     
 }
 

@@ -31,9 +31,12 @@ typedef enum {
 @property(nonatomic, strong)NSString *title;
 //completion handler
 @property(nonatomic, strong)void (^completion)(BOOL);
+//close Menu or not
+@property(nonatomic)BOOL isMenuClose;
 
 //initialization methods
 -(RBMenuItem *)initMenuItemWithTitle:(NSString *)title withCompletionHandler:(void (^)(BOOL))completion;
+-(RBMenuItem *)initMenuItemWithTitle:(NSString *)title withCompletionHandler:(void (^)(BOOL))completion withIsCloseMenu:(BOOL)isCloseMenu;
 
 @end
 
@@ -46,6 +49,7 @@ typedef enum {
 @property(nonatomic, strong)UIFont  *titleFont;
 @property(nonatomic, strong)UIColor *highLightTextColor;
 @property(nonatomic)RBMenuAllignment titleAllignment;
+@property(nonatomic)BOOL isPangeStureenabel;
 
 //create Menu with white background
 -(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment forViewController:(UIViewController *)viewController;
