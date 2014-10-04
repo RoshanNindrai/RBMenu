@@ -144,7 +144,10 @@ NSInteger const STARTINDEX                    = 1;
         
         [self setShadowProperties];
         [_contentController.view setAutoresizingMask:UIViewAutoresizingNone];
-        [[[[UIApplication sharedApplication] delegate] window] insertSubview:self atIndex:0];
+        UIViewController *menuController = [[UIViewController alloc] init];
+        menuController.view = self;
+        [[[[UIApplication sharedApplication] delegate] window] setRootViewController:menuController];
+        [[[[UIApplication sharedApplication] delegate] window] addSubview:_contentController.view];
         
     }
     
