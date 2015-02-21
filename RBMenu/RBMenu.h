@@ -22,7 +22,7 @@ typedef enum {
     RBMenuTextAlignmentRight,
     RBMenuTextAlignmentCenter
     
-}RBMenuAllignment;
+}RBMenuAlignment;
 
 @interface RBMenuItem : NSObject
 
@@ -45,16 +45,16 @@ typedef enum {
 @property(nonatomic, strong)UIColor *textColor;
 @property(nonatomic, strong)UIFont  *titleFont;
 @property(nonatomic, strong)UIColor *highLightTextColor;
-@property(nonatomic)RBMenuAllignment titleAllignment;
+@property(nonatomic)RBMenuAlignment titleAlignment;
 
 //create Menu with white background
--(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAllignment)titleAllignment forViewController:(UIViewController *)viewController;
+-(RBMenu *)initWithItems:(NSArray *)menuItems andTextAllignment:(RBMenuAlignment)titleAlignment forViewController:(UIViewController *)viewController;
 
 -(RBMenu *)initWithItems:(NSArray *)menuItems
                textColor:(UIColor *)textColor
      hightLightTextColor:(UIColor *)hightLightTextColor
          backgroundColor:(UIColor *)backGroundColor
-       andTextAllignment:(RBMenuAllignment)titleAllignment
+       andTextAlignment:(RBMenuAlignment)titleAlignment
        forViewController:(UIViewController *)viewController;
 
 -(void)showMenu;

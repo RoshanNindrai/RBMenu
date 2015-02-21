@@ -68,7 +68,7 @@ NSInteger const STARTINDEX                    = 1;
 #pragma mark initializers
 
 -(RBMenu *)initWithItems:(NSArray *)menuItems
-       andTextAllignment:(RBMenuAllignment)titleAllignment
+       andTextAllignment:(RBMenuAlignment)titleAlignment
        forViewController:(UIViewController *)viewController
 {
     
@@ -76,7 +76,7 @@ NSInteger const STARTINDEX                    = 1;
                      textColor:[UIColor grayColor]
            hightLightTextColor:[UIColor blackColor]
                backgroundColor:[UIColor whiteColor]
-             andTextAllignment:titleAllignment
+             andTextAlignment:titleAlignment
              forViewController:viewController];
 }
 
@@ -84,7 +84,7 @@ NSInteger const STARTINDEX                    = 1;
                textColor:(UIColor *)textColor
      hightLightTextColor:(UIColor *)hightLightTextColor
          backgroundColor:(UIColor *)backGroundColor
-       andTextAllignment:(RBMenuAllignment)titleAllignment
+       andTextAlignment:(RBMenuAlignment)titleAlignment
        forViewController:(UIViewController *)viewController
 {
     
@@ -92,7 +92,7 @@ NSInteger const STARTINDEX                    = 1;
     self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), self.height);
     self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.menuItems = menuItems;
-    self.titleAllignment = titleAllignment;
+    self.titleAlignment = titleAlignment;
     self.textColor = textColor;
     self.highLightTextColor = hightLightTextColor;
     self.backgroundColor = backGroundColor;
@@ -436,9 +436,9 @@ NSInteger const STARTINDEX                    = 1;
 
 -(void)setMenuTitleAlligmentForCell:(UITableViewCell *)cell{
     
-    if (self.titleAllignment) {
+    if (self.titleAlignment) {
         
-        switch (self.titleAllignment) {
+        switch (self.titleAlignment) {
                 
             case RBMenuTextAlignmentLeft:
                 cell.textLabel.textAlignment = NSTextAlignmentLeft;
