@@ -51,7 +51,7 @@ In the above code, the RBMenuItems are added to the menu and the allignment of t
 
 At present RBMenu supports three menu title allignments 
 
-    RBMenuTextAllignmentLeft
+    RBMenuTextAlignmentLeft
     RBMenuTextAlignmentRight
     RBMenuTextAlignmentCenter
 
