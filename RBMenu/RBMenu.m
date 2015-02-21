@@ -68,7 +68,7 @@ NSInteger const STARTINDEX                    = 1;
 #pragma mark initializers
 
 -(RBMenu *)initWithItems:(NSArray *)menuItems
-       andTextAllignment:(RBMenuAlignment)titleAlignment
+       andTextAlignment:(RBMenuAlignment)titleAlignment
        forViewController:(UIViewController *)viewController
 {
     
