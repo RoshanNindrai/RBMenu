@@ -90,7 +90,6 @@ NSInteger const STARTINDEX                    = 1;
     
     self = [[RBMenu alloc] init];
     self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), self.height);
-    self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
     self.menuItems = menuItems;
     self.titleAlignment = titleAlignment;
     self.textColor = textColor;
