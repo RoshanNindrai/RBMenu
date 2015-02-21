@@ -183,6 +183,20 @@ NSInteger const STARTINDEX                    = 1;
     
 }
 
+#pragma mark layout method
+
+-(void)layoutSubviews {
+    
+    self.currentMenuState = RBMenuClosedState;
+    self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), self.height);
+    self.contentController.view.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), CGRectGetHeight([[UIScreen mainScreen] bounds]));
+    [self setShadowProperties];
+    self.menuContentTable = [[UITableView alloc] initWithFrame:self.frame];
+    
+    
+}
+
+
 #pragma mark menu interactions
 
 -(void)showMenu{
@@ -426,7 +440,7 @@ NSInteger const STARTINDEX                    = 1;
         
         switch (self.titleAllignment) {
                 
-            case RBMenuTextAllignmentLeft:
+            case RBMenuTextAlignmentLeft:
                 cell.textLabel.textAlignment = NSTextAlignmentLeft;
             case RBMenuTextAlignmentCenter:
                 cell.textLabel.textAlignment = NSTextAlignmentCenter;

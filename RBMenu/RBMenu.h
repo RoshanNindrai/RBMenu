@@ -18,7 +18,7 @@ typedef enum {
 
 typedef enum {
     
-    RBMenuTextAllignmentLeft,
+    RBMenuTextAlignmentLeft,
     RBMenuTextAlignmentRight,
     RBMenuTextAlignmentCenter
     

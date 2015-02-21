@@ -14,7 +14,7 @@
 		<string>https://github.com/RoshanNindrai/RBMenu.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>RBMenuBarDemo.xcodeproj/project.xcworkspace</string>
+	<string>RBMenuBarDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0CEA4D29CBC8FD0698E5FFCCB5355C9B360E1E9E</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>0CEA4D29CBC8FD0698E5FFCCB5355C9B360E1E9E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>RBMenuBarDemo</string>
+			<string>RBMenu</string>
 		</dict>
 	</array>
 </dict>
