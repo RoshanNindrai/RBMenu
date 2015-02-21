@@ -82,7 +82,7 @@ TODO
 
 1. Add Images to Menu
 2. Comment the code :(
-3. Add landscape support
+3. ~~Add landscape support.~~
 
 LICENSE:
 ============
