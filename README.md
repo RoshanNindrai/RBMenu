@@ -39,17 +39,17 @@ create each menu item by creating an object of RBMenuItems class For this demo p
     
 Once the item are created it is neccesary to add the items to the RBMenu. The delegate needs to be a subclass of UIViewController
 
-     _menu = [[RBMenu alloc] initWithItems:@[item, item2] andTextAllignment:RBMenuTextAlignmentLeft forViewController:self];
+     _menu = [[RBMenu alloc] initWithItems:@[item, item2] andTextAlignment:RBMenuTextAlignmentLeft forViewController:self];
 In the above code, the RBMenuItems are added to the menu and the allignment of the title along the menu is also mentioned while menu creation. Custom menu with user defined properties to the Menu can be performed by using the following method.
 
     -(RBMenu *)initWithItems:(NSArray *)menuItems
                textColor:(UIColor *)textColor
      hightLightTextColor:(UIColor *)hightLightTextColor
          backgroundColor:(UIColor *)backGroundColor
-       andTextAllignment:(RBMenuAllignment)titleAllignment
+       andTextAlignment:(RBMenuAlignment)titleAlignment
        forViewController:(UIViewController *)viewController
 
-At present RBMenu supports three menu title allignments 
+At present RBMenu supports three menu title alignments 
 
     RBMenuTextAlignmentLeft
     RBMenuTextAlignmentRight
@@ -66,7 +66,7 @@ These properties of the menu can be customized
     @property(nonatomic, strong)UIColor *textColor;
     @property(nonatomic, strong)UIFont  *titleFont;
     @property(nonatomic, strong)UIColor *highLightTextColor;
-    @property(nonatomic)RBMenuAllignment titleAllignment;
+    @property(nonatomic)RBMenuAlignment titleAlignment;
 
     
 
