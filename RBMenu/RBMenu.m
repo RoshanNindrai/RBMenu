@@ -103,17 +103,6 @@ NSInteger const STARTINDEX                    = 1;
 
 #pragma mark setter
 
-
--(void)setBackgroundColor:(UIColor *)backgroundColor{
-    
-    if(self.backgroundColor != backgroundColor){
-        
-        [self.menuContentTable setBackgroundColor:backgroundColor];
-        
-    }
-    
-}
-
 -(void)setHeight:(CGFloat)height{
     
     if(_height != height){
@@ -164,6 +153,7 @@ NSInteger const STARTINDEX                    = 1;
         [menuContentTable setSeparatorColor:[UIColor clearColor]];
         [menuContentTable setBackgroundColor:[UIColor whiteColor]];
         [menuContentTable setAllowsMultipleSelection:NO];
+        [menuContentTable setBackgroundColor:self.backgroundColor];
         _menuContentTable = menuContentTable;
         [self addSubview:_menuContentTable];
         
