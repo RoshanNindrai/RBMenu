@@ -125,10 +125,10 @@ NSInteger const STARTINDEX                    = 1;
         else
             _contentController = contentController;
         
-        
+        _panGesture=  [[UIPanGestureRecognizer alloc]
+                       initWithTarget:self action:@selector(didPan:)];
         if(PANGESTUREENABLE)
-            [_contentController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc]
-                                                           initWithTarget:self action:@selector(didPan:)]];
+            [_contentController.view addGestureRecognizer:_panGesture];
         
         [self setShadowProperties];
         [_contentController.view setAutoresizingMask:UIViewAutoresizingNone];
