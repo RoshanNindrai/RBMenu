@@ -46,6 +46,7 @@ typedef enum {
 @property(nonatomic, strong)UIFont  *titleFont;
 @property(nonatomic, strong)UIColor *highLightTextColor;
 @property(nonatomic)RBMenuAlignment titleAlignment;
+@property(nonatomic,strong)UIPanGestureRecognizer *panGesture ;
 
 //create Menu with white background
 -(RBMenu *)initWithItems:(NSArray *)menuItems andTextAlignment:(RBMenuAlignment)titleAlignment forViewController:(UIViewController *)viewController;
